@@ -11,14 +11,18 @@
   padding: 0 80px;
   margin: auto;
 }
+
+/* Navbar Styling */
+
 .navbar {
   position: fixed;
   width: 100%;
   padding: 30px 0;
   font-family: "Ubuntu", sans-serif;
+  transition: all 0.3s ease;
 }
-.navbar .sticky {
-  padding: 30px 0;
+.navbar.sticky {
+  padding: 15x 0;
   background: crimson;
 }
 .navbar .max-width {
@@ -30,9 +34,15 @@
   color: #fff;
   font-size: 35px;
   font-weight: 600;
+  /* manipulating logo */
+  margin-left: -70px;
 }
-.navbar .logo a span {
+.navbar.sticky .logo a span {
+  color: #fff;
+}
+.navbar .navbar .logo a span {
   color: crimson;
+  transition: all 0.3s ease;
 }
 .navbar .menu li {
   list-style: none;
@@ -47,6 +57,17 @@
 }
 .navbar .menu li a:hover {
   color: crimson;
+}
+
+.navbar.sticky .menu li a:hover {
+  color: #fff;
+}
+/* Menu btn styling */
+.menu-btn {
+  color: #fff;
+  font-size: 23px;
+  cursor: pointer;
+  display: none;
 }
 
 /* Home section styling */
