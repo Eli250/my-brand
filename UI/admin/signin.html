@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form method="post" action="/signin">
+        <div class="textField">
+          <input type="text" name="username" required />
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="textField">
+          <input type="password" name="password" required />
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="pass">Forgot Password?</div>
+        <button type="submit">Login</button>
+        <div class="signup_link">No Account? <a href="/signup">Signup</a></div>
+      </form>
+    </div>
+  </body>
+</html>

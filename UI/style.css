@@ -123,12 +123,13 @@ section {
 .about,
 .services,
 .skills,
-.teams {
+.contact {
   font-family: "Poppins", sans-serif;
 }
 .about .about-content,
 .services .serv-content,
-.skills .skills-content {
+.skills .skills-content,
+.contact .contact-content {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -329,15 +330,61 @@ section .title::after {
   width: 70%;
 }
 /*Teams section styling*/
-.teams .title::after {
+/* .teams .title::after {
   content: "Meet my associates";
 }
-
+.teams .carousel .card {
+  background: #222;
+  padding: 25px 35px;
+}
+.teams .carousel .card img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid crimson;
+} */
+/* Contact section styling */
+.contact .title::after {
+  content: "get in touch";
+}
+.contact .contact-content .column {
+  width: calc(50% - 30px);
+}
+.contact .contact-content .text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.contact .contact-content .left p {
+  text-align: justify;
+}
+.contact .contact-content .left .icons {
+  margin: 10px 0;
+}
+.contact .contact-content .row {
+  display: flex;
+  height: 65px;
+  align-items: center;
+}
+.contact .contact-content .row .info {
+  margin-left: 30px;
+}
+.contact .contact-content .row i {
+  font-size: 25px;
+  color: crimson;
+}
+.contact .contact-content .info .head {
+  font-weight: 500;
+}
+.contact .contact-content .info .sub-title {
+  color: #333;
+}
 /*
 
 
 
-  Resposive media query start
+  Resposive me dia query start
 
 
 
