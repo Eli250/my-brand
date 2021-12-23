@@ -1,8 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: linear-gradient(120deg, #2980b9, #8e44ad);
   height: 100vh;
   overflow: hidden;
@@ -13,25 +18,25 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 500px;
   background: white;
   border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
 }
 .center h1 {
   text-align: center;
-  padding: 0, 0, 20px, 0;
+  padding: 20px 0;
   border-bottom: 1px solid silver;
 }
 .center form {
   padding: 0 40px;
   box-sizing: border-box;
 }
-form .textField {
+form .txt_field {
   position: relative;
   border-bottom: 2px solid #adadad;
-  margin: 60px 0;
+  margin: 30px 0;
 }
-.textField input {
+.txt_field input {
   width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -40,17 +45,17 @@ form .textField {
   background: none;
   outline: none;
 }
-.textField label {
+.txt_field label {
   position: absolute;
   top: 50%;
   left: 5px;
   color: #adadad;
   transform: translateY(-50%);
-  font-size: px;
+  font-size: 16px;
   pointer-events: none;
   transition: 0.5s;
 }
-.textField span::before {
+.txt_field span::before {
   content: "";
   position: absolute;
   top: 40px;
@@ -60,20 +65,19 @@ form .textField {
   background: #2691d9;
   transition: 0.5s;
 }
-.textField input:focus ~ label,
-.textField input:valid ~ label {
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
   top: -5px;
   color: #2691d9;
 }
-.textField input:focus ~ span::before,
-.textField input:valid ~ span::before {
-  width: 100px;
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+  width: 100%;
 }
 .pass {
-  margin: -5px 0 2px 5px;
+  margin: -5px 0 20px 5px;
   color: #a6a6a6;
   cursor: pointer;
-  font-size: 20px;
 }
 .pass:hover {
   text-decoration: underline;

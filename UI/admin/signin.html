@@ -1,28 +1,30 @@
-<html lang="en">
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
+    <title>Animated Login Form | CodingNepal</title>
     <link rel="stylesheet" href="css/style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
   </head>
-
   <body>
     <div class="center">
       <h1>Login</h1>
-      <form method="post" action="/signin">
-        <div class="textField">
-          <input type="text" name="username" required />
+      <form method="post">
+        <div class="txt_field">
+          <input type="text" required />
           <span></span>
           <label>Username</label>
         </div>
-        <div class="textField">
-          <input type="password" name="password" required />
+        <div class="txt_field">
+          <input type="password" required />
           <span></span>
           <label>Password</label>
         </div>
         <div class="pass">Forgot Password?</div>
-        <button type="submit">Login</button>
-        <div class="signup_link">No Account? <a href="/signup">Signup</a></div>
+        <input type="submit" value="Login" />
+        <div class="signup_link">
+          Wanna go back? <a href="../../index.html">Home</a>
+        </div>
       </form>
     </div>
   </body>
