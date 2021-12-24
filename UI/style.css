@@ -6,6 +6,9 @@
   box-sizing: border-box;
   text-decoration: none;
 }
+html {
+  scroll-behavior: smooth;
+}
 .max-width {
   max-width: 1300px;
   padding: 0 80px;
@@ -70,7 +73,33 @@
   cursor: pointer;
   display: none;
 }
-
+.scroll-up-btn {
+  position: fixed;
+  height: 45px;
+  width: 42px;
+  background: crimson;
+  right: 30px;
+  bottom: 10px;
+  text-align: center;
+  line-height: 45px;
+  color: #fff;
+  z-index: 9999;
+  font-size: 30px;
+  border-radius: 6px;
+  border-bottom-width: 2px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.scroll-up-btn.show {
+  bottom: 30px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.scroll-up-btn:hover {
+  filter: brightness(90%);
+}
 /* Home section styling */
 
 .home {
@@ -122,14 +151,17 @@ section {
 }
 .about,
 .services,
+.my-blog,
 .skills,
-.contact {
+.contact,
+footer {
   font-family: "Poppins", sans-serif;
 }
 .about .about-content,
 .services .serv-content,
 .skills .skills-content,
-.contact .contact-content {
+.contact .contact-content,
+.my-blog .blog-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -212,7 +244,7 @@ section .title::after {
 
 /* Service / Blog section styling */
 .services,
-.teams {
+.my-blog {
   color: #fff;
   background: #111;
 }
@@ -225,7 +257,7 @@ section .title::after {
   background: #111;
   content: "Explore my blogs";
 }
-.services .serv-content .card {
+/* .services .serv-content .card {
   width: calc(33% - 20px);
   background: #222;
   text-align: center;
@@ -254,7 +286,105 @@ section .title::after {
   font-size: 25px;
   font-weight: 500;
   margin: 10px 0 7px 0;
+} */
+
+/* Blog styling   */
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+}
+#blog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.blog-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.blog-heading span {
+  color: crimson;
+}
+.blog-heading h3 {
+  font-size: 2.4rem;
+  color: #222;
+  font-weight: normal;
+}
+.blog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px;
+  flex-wrap: wrap;
+}
+.blog-box {
+  width: 350px;
+  background-color: #fff;
+  border: 1px solid #ece;
+  margin: 20px;
+}
+.blog-img {
+  width: 100%;
+  height: auto;
+}
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.blog-text {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.blog-text span {
+  color: crimson;
+}
+.blog-text .blog-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #222;
+}
+.blog-text .blog-title:hover {
+  color: rgb(53, 41, 44);
+}
+.blog-text p {
+  color: #9b9b9b;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 20px 0px;
+}
+.blog-text a {
+  color: #0f0f0f;
+}
+.blog-text a:hover {
+  color: crimson;
+  transition: all 0.3s ease;
+}
+
 /* Skills Section styling */
 .skills .title::after {
   content: "What i know";
@@ -380,8 +510,76 @@ section .title::after {
 .contact .contact-content .info .sub-title {
   color: #333;
 }
-/*
+.contact .right form .fields {
+  display: flex;
+}
+.contact .right form .field,
+.contact .right form .fields .field {
+  height: 45px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.contact .right form .textarea {
+  height: 80px;
+  width: 100%;
+}
+.contact .right form .name {
+  margin-right: 10px;
+}
+.contact .right form .email {
+  margin-left: 10px;
+}
+.contact .right form .field input,
+.contact .right form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+}
+.contact .right form .textarea textarea {
+  padding-top: 10px;
+  resize: none;
+}
+.contact .right form .button {
+  height: 47px;
+  width: 170px;
+}
+.contact .right form .button button {
+  width: 100%;
+  height: 100%;
+  border: 2px solid crimson;
+  background: crimson;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.contact .right form .button button:hover {
+  color: crimson;
+  background: none;
+}
 
+/* Footer section styling */
+footer {
+  background: #111;
+  padding: 20px 23px;
+  color: #fff;
+}
+footer span a {
+  color: crimson;
+  text-decoration: none;
+}
+footer span a:hover {
+  text-decoration: underline;
+}
+/*
+ 
 
 
   Resposive me dia query start
@@ -466,7 +664,8 @@ section .title::after {
     width: calc(50% - 10px);
     margin-bottom: 20px;
   }
-  .skills .skills-content .column {
+  .skills .skills-content .column,
+  .contact .contact-content .column {
     width: 100%;
     margin-bottom: 35px;
   }
