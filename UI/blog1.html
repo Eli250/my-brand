@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>blog</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/blog.css" />
+    <link rel="stylesheet" href="../css/blog-detail.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <div class="menu-links">
+        <a href="../index.html">Home</a>
+        <a href="index.html#about-me">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="#" class="active">Blog</a>
+      </div>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="../index.html">Home</a>
+        <a href="#about-me">About</a>
+        <a href="html/contact.html">Contact</a>
+        <a href="html/blog">Blog</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="openNav()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div class="article">
+      <div class="container article-grid">
+        <div id="article-detail">
+          <h1 id="blogTitle"></h1>
+          <hr />
+          <img src="" alt="" id="blogPicture" />
+          <p id="blogContent"></p>
+          <hr />
+        </div>
+        <div class="author">
+          <img src="../images/edgar.png" alt="" />
+          <span
+            >SHUMBUSHO EDGAR <br />
+            <i></i
+          ></span>
+        </div>
+        <hr />
+        <div class="add-comment" id="myComment">
+          <h4>Add comment</h4>
+          <form id="commentForm">
+            <input
+              type="text"
+              placeholder="Your name"
+              name="name"
+              id="commentorName"
+            /><br />
+            your comment: <br />
+            <textarea name="comment" id="commentorComment"> </textarea><br />
+            <input type="submit" value="Add comment" />
+          </form>
+        </div>
+        <hr />
+        <h3>Comments</h3>
+        <div class="comment" id="comments">
+          <div class="commentor"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="newsletter">
+          <h3 class="footer-header">Subscribe to our Newsletter</h3>
+          <input
+            type="text"
+            placeholder=" Email address"
+            class="subscribe-input"
+          />
+          <input type="button" value="subscribe" class="subscribe-button" />
+        </div>
+      </div>
+      <div class="footer-content">
+        <div>
+          <h3 class="footer-header">Pages</h3>
+          <a href="html/contact.html" class="pages">Contact</a>
+          <a href="html/blog.html" class="pages">Blog</a>
+        </div>
+      </div>
+      <div class="footer-content">
+        <h3 class="footer-header">Follow me:</h3>
+        <a href="https://web.facebook.com/edgar.junior.50309/"
+          ><img src="images/facebook .png" alt="" class="social-media"
+        /></a>
+        <a href="https://twitter.com/ShumbushoEdgar"
+          ><img src="images/twitter.png" alt="" class="social-media"
+        /></a>
+        <a href="https://www.linkedin.com/in/shumbusho-edgar-017b00176/"
+          ><img src="images/linkedin.png" alt="" class="social-media"
+        /></a>
+      </div>
+      <div class="footer-content copyright">
+        <p>Copyright &#9400; 2020, Allright reserved</p>
+      </div>
+    </footer>
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
+
+    <script src="../js/read-article.js"></script>
+    <script src="../js/readArticleDetails.js"></script>
+  </body>
+</html>
