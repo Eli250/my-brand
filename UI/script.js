@@ -5,6 +5,7 @@ $(document).ready(function(){
         }else{
             $('.navbar').removeClass("sticky");
         }
+<<<<<<< HEAD
         if(this.scrollY > 500){
             $('.scroll-up-btn').addClass("show");
         }else{
@@ -16,6 +17,8 @@ $(document).ready(function(){
         $('html').animate({scrollTop: 0});
         // removing smooth scroll on slide-up button click
         $('html').css("scrollBehavior", "auto");
+=======
+>>>>>>> d16ba02e103ecb11904e3676773f375f1a0989f6
     });
     // Toggle menu / navbar script
 
@@ -23,5 +26,8 @@ $(document).ready(function(){
         $('.navbar .menu').toggleClass("active");
         $('.menu-btn i').toggleClass("active");
     });
+<<<<<<< HEAD
 
+=======
+>>>>>>> d16ba02e103ecb11904e3676773f375f1a0989f6
 });
