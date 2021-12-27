@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'poppins', sans-serif;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+.top {
+  background-color: crimson;
+}
+.max-width {
+  max-width: 100%;
+  padding: 0 32px;
+  margin: auto;
+}
+
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  padding: 30px 0;
+  font-family: 'Ubuntu', sans-serif;
+  transition: all 0.3s ease;
+}
+.navbar.sticky {
+  padding: 15x 0;
+  background: crimson;
+}
+.navbar .max-width {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .logo a {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  /* manipulating logo */
+  margin-left: 0px;
+}
+.navbar.sticky .logo a span {
+  color: #fff;
+}
+.navbar .logo a span {
+  color: black;
+  transition: all 0.3s ease;
+}
+.navbar .menu li {
+  list-style: none;
+  display: inline-block;
+}
+.navbar .menu li a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  transition: color 0.3s ease;
+}
+.navbar .menu li a:hover {
+  color: black;
+}
+
+.navbar.sticky .menu li a:hover {
+  color: #fff;
+}
+.post {
+  display: flex;
+}
+.post .max-width {
+  margin: 110px 0 auto 10px;
+  padding-top: 6rem;
+}
+.post .title,
+.post .sub-title {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.post .sub-title {
+  font-weight: 300;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+}
+.post .sub-title span {
+  font-size: 16px;
+  font-weight: 300;
+  font-family: 'Ubuntu', sans-serif;
+  color: crimson;
+  margin-left: 5px;
+  margin-bottom: 50px;
+}
+.post .post-content {
+  font-size: 16px;
+}
+.post-img {
+  display: flex;
+  margin-bottom: 25px;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.post-img img {
+  width: 798px;
+  height: 426px;
+}
+#description {
+  display: block;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+#description h5 {
+  font-weight: 550;
+  font-style: italic;
+}
+.post-details {
+  font-family: 'Ubuntu', sans-serif;
+  text-align: justify;
+}
+.post-details p {
+  margin-bottom: 15px;
+  padding: 10px 0px 10px 0;
+}
+/* .post .post-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+} */
+.post .post-content .left {
+  width: 80%;
+}
+.post .post-content .right {
+  width: 50%;
+}
+.post .post-content .column .comment-header {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+.post .post-content .left p {
+  text-align: justify;
+}
+.post .post-content .left .comments {
+  display: flex;
+  color: rgba(0, 0, 0, 0.5);
+  border: rgba(204, 204, 204, 0.2) solid;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  padding: 5px;
+}
+/* .post .post-content .comments .comment-owner {
+} */
+.post .post-content .right .fields {
+  display: flex;
+}
+.post .right form .field,
+.post .right form .fields .field {
+  height: 45px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.post .right form .textarea {
+  height: 80px;
+  width: 100%;
+}
+.post .right form .name {
+  margin-right: 10px;
+}
+.post .right form .email {
+  margin-left: 10px;
+}
+.post .right form .field input,
+.post .right form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-family: 'Poppins', sans-serif;
+}
+.post .right form .textarea textarea {
+  padding-top: 10px;
+  resize: none;
+}
+.post .right form .button {
+  height: 47px;
+  width: 170px;
+}
+.post .right form .button button {
+  width: 100%;
+  height: 100%;
+  border: 2px solid crimson;
+  background: crimson;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.post .right form .button button:hover {
+  color: crimson;
+  background: none;
+}
+.post .post-content .right .comments {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+.post .post-content .right form {
+  margin-bottom: 50px;
+}
