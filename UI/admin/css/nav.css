@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 header {
   position: fixed;
@@ -27,7 +27,8 @@ header {
   float: right;
   margin-top: -30px;
   margin-right: 40px;
-  border-radius: 10px;
+  border-radius: 2px;
+  font-style: 15px;
   font-weight: 600;
   color: #fff;
   transition: 0.5s;
@@ -58,6 +59,7 @@ header {
   margin-top: 0;
   margin-bottom: 30px;
 }
+
 .sidebar a {
   color: #fff;
   display: block;
@@ -65,4 +67,52 @@ header {
   line-height: 60px;
   text-decoration: none;
   padding-left: 40px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  transition-property: background;
+}
+.sidebar a:hover {
+  background: crimson;
+}
+.sidebar i {
+  padding: 10px;
+}
+label #sidebar_btn {
+  z-index: 1;
+  color: #fff;
+  position: fixed;
+  cursor: pointer;
+  left: 300px;
+  font-size: 20px;
+  margin: 5px 0;
+  transition: 0.5s;
+  transition-property: color;
+}
+label #sidebar_btn:hover {
+  color: #19b3d3;
+}
+#check:checked ~ .sidebar {
+  left: -190px;
+}
+#check:checked ~ .sidebar a span {
+  display: none;
+}
+#check:checked ~ .sidebar a {
+  font-size: 20px;
+  margin-left: 170px;
+  width: 80px;
+}
+.content {
+  margin-left: 250px;
+  background: url(../../images/eli-banner.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  transition: 0.5s;
+}
+#check:checked ~ .content {
+  margin-left: 60px;
+}
+#check {
+  display: none;
 }
