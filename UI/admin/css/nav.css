@@ -4,10 +4,12 @@
   font-family: 'Poppins', sans-serif;
 }
 header {
+  z-index: 1;
   position: fixed;
   background: #22242a;
   padding: 20px;
-  width: 100%;
+  width: calc(100% - 0%);
+  top: 0;
   height: 30px;
 }
 .left-area {
@@ -38,23 +40,32 @@ header {
   background: #0d90bb;
 }
 .sidebar {
+  z-index: 1;
+  top: 0;
   background: #2f323a;
   margin-top: 70px;
   padding-top: 30px;
   position: fixed;
   left: 0;
   width: 250px;
-  height: 100%;
+  height: calc(100% - 9%);
   transition: 0.5s;
   transition-property: left;
+  overflow-y: auto;
 }
-.sidebar .profile {
+.profile-pic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar .profile-pic .profile-img {
   width: 100px;
   height: 100px;
   border-radius: 100px;
   margin-bottom: 10px;
 }
-.sidebar h4 {
+.sidebar .profile-pic h4 {
   color: #ccc;
   margin-top: 0;
   margin-bottom: 30px;
@@ -77,7 +88,7 @@ header {
 .sidebar i {
   padding: 10px;
 }
-label #sidebar_btn {
+label #sidebar-btn {
   z-index: 1;
   color: #fff;
   position: fixed;
@@ -88,21 +99,24 @@ label #sidebar_btn {
   transition: 0.5s;
   transition-property: color;
 }
-label #sidebar_btn:hover {
+label #sidebar-btn:hover {
   color: #19b3d3;
 }
 #check:checked ~ .sidebar {
-  left: -190px;
+  left: -185px;
 }
 #check:checked ~ .sidebar a span {
   display: none;
 }
 #check:checked ~ .sidebar a {
   font-size: 20px;
-  margin-left: 170px;
-  width: 80px;
+  margin-left: 165px;
+  width: 100%;
 }
 .content {
+  width: (100% - 25%);
+  margin-top: 60px;
+  padding: 20px;
   margin-left: 250px;
   background: url(../../images/eli-banner.png);
   background-size: cover;
@@ -113,6 +127,91 @@ label #sidebar_btn:hover {
 #check:checked ~ .content {
   margin-left: 60px;
 }
+#check:checked ~ .sidebar .profile-pic {
+  display: none;
+}
 #check {
   display: none;
+}
+.mobile-nav {
+  display: none;
+}
+/* Responsive codes */
+@media screen and (max-width: 780px) {
+  .sidebar {
+    display: none;
+  }
+  #sidebar-btn {
+    display: none;
+  }
+  .content {
+    margin-left: 0;
+    margin-top: 0;
+    padding: 10px 20px;
+    transition: 0s;
+  }
+  .content .card p {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  #check:checked ~ .content {
+    margin-left: 0;
+  }
+  .mobile-nav {
+    display: block;
+    width: calc(100% - 0px);
+  }
+  .nav-bar {
+    background: #222;
+    width: (100% - 0px);
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  .nav-bar .mobile-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  .nav-bar .nav-btn {
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.5s;
+    transition-property: color;
+  }
+  .nav-bar .nav-btn:hover {
+    color: #19b3d3;
+  }
+  .mobile-nav-items {
+    display: none;
+  }
+  .mobile-nav-items {
+    background: #3f323a;
+  }
+  .mobile-nav-items a {
+    color: #fff;
+    display: block;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 60px;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+  }
+  .mobile-nav-items a:hover {
+    background: #19b3d3;
+  }
+  .mobile-nav-items i {
+    padding-right: 10px;
+  }
+  .active {
+    display: block;
+  }
 }
