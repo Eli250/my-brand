@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     />
-    <title>Admin Panel</title>
+    <title>Admin | Posts</title>
   </head>
   <body>
     <input type="checkbox" id="check" />
@@ -33,7 +33,7 @@
         <a href="dashboard.html"
           ><i class="fas fa-desktop"></i><span>Dashboard</span>
         </a>
-        <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
+        <a href=""><i class="fas fa-cogs"></i><span>Posts</span></a>
         <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
         <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
       </div>
@@ -46,33 +46,58 @@
       <a href="dashboard.html"
         ><i class="fas fa-desktop"></i><span>Dashboard</span>
       </a>
-      <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
+      <a href=""><i class="fas fa-cogs"></i><span>Posts</span></a>
       <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
       <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
     </div>
-    <div class="content">
-      <div id="title">Home | Dashboard</div>
-      <div class="cards">
-        <div class="card">
-          <div class="circle">
-            <div class="number">3</div>
-          </div>
-          <div class="text">Posts</div>
-        </div>
-        <div class="card">
-          <div class="circle">
-            <div class="number">3</div>
-          </div>
-          <div class="text">Comments</div>
-        </div>
-        <div class="card">
-          <div class="circle">
-            <div class="number">3</div>
-          </div>
-          <div class="text">Views</div>
-        </div>
-      </div>
+    <div class="p-content">
+      <div id="title">Home | Posts | Manage Posts</div>
+      <div id="new-post"><a href="#"> + New Post</a></div>
+
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Comments</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>New Trending macBook Pro</td>
+          <td>Lorem ipsum dolor sit amet consectetur.</td>
+          <td>10 Dec 2021</td>
+          <td>5</td>
+          <td><a href="#">Update</a> | <a href="#">Delete</a></td>
+        </tr>
+        <tr class="active-row">
+          <td>2</td>
+          <td>New Trending macBook Pro</td>
+          <td>Lorem ipsum dolor sit amet consectetur.</td>
+          <td>10 Aug 2021</td>
+          <td>28</td>
+          <td><a href="#">Update</a> | <a href="#">Delete</a></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>New Trending macBook Pro</td>
+          <td>Lorem ipsum dolor sit amet consectetur.</td>
+          <td>10 Nov 2021</td>
+          <td>142</td>
+          <td><a href="#">Update</a> | <a href="#">Delete</a></td>
+        </tr>
+      </table>
     </div>
+
+    <!-- 
+
+
+
+
+     -->
     <script type="text/javascript">
       $(document).ready(function () {
         $('.nav-btn').click(function () {
