@@ -279,6 +279,91 @@ label #sidebar-btn:hover {
   color: crimson;
   font-weight: 600;
 }
+/* Styling New Post Page */
+.content .post-cont {
+  margin-top: 60px;
+  background: #fff;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+.content .post-cont .f-title {
+  display: flex;
+  background: #ccc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 50px;
+  padding-left: 10px;
+  justify-content: left;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+}
+form {
+  height: 90%;
+}
+.content .post-cont form label {
+  display: inline-block;
+  width: 120px;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 30px;
+  padding-bottom: 5px;
+  font-style: bold;
+  font-weight: 600;
+}
+.content .post-cont .f-fields {
+  height: 90%;
+}
+.content .post-cont form input[type='text'],
+.content .post-cont form textarea {
+  display: block;
+  margin-left: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  width: calc(100% - 20px);
+  padding: 5px;
+}
+.content .post-cont form textarea {
+  height: 60%;
+  resize: none;
+}
+.content .post-cont form input[type='submit'] {
+  margin-left: 10px;
+  padding: 5px;
+  background: crimson;
+  text-decoration: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-style: 15px;
+  font-weight: 500;
+  color: #fff;
+  transition: 0.5s ease;
+  transition-property: color;
+  cursor: pointer;
+}
+.content .post-cont form input[type='submit']:hover {
+  border: 1.5px crimson solid;
+  background: none;
+  color: crimson;
+}
+.file {
+  display: inline-block;
+  border: #ccc solid 1px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 300px;
+}
+#file {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
 /* Responsive codes */
 @media screen and (max-width: 780px) {
   .sidebar {
@@ -315,7 +400,8 @@ label #sidebar-btn:hover {
     font-size: 14px;
     opacity: 0.8;
   }
-  #check:checked ~ .content {
+  #check:checked ~ .content,
+  #check:checked ~ .p-content {
     margin-left: 0;
   }
   .mobile-nav {

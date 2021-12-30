@@ -50,52 +50,36 @@
       <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
       <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
     </div>
-    <div class="p-content">
-      <div id="title">Home | Posts | Manage Posts</div>
-      <div id="new-post"><a href="create-post.html"> + New Post</a></div>
+    <div class="content">
+      <div id="title">Home | Posts | Manage Posts | Add Post</div>
 
-      <table class="content-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Comments</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tr>
-          <td>1</td>
-          <td>New Trending macBook Pro</td>
-          <td>Lorem ipsum dolor sit amet consectetur.</td>
-          <td>10 Dec 2021</td>
-          <td>5</td>
-          <td>
-            <a href="update-post.html">Update</a> | <a href="#">Delete</a>
-          </td>
-        </tr>
-        <tr class="active-row">
-          <td>2</td>
-          <td>New Trending macBook Pro</td>
-          <td>Lorem ipsum dolor sit amet consectetur.</td>
-          <td>10 Aug 2021</td>
-          <td>28</td>
-          <td>
-            <a href="update-post.html">Update</a> | <a href="#">Delete</a>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>New Trending macBook Pro</td>
-          <td>Lorem ipsum dolor sit amet consectetur.</td>
-          <td>10 Nov 2021</td>
-          <td>142</td>
-          <td>
-            <a href="update-post.html">Update</a> | <a href="#">Delete</a>
-          </td>
-        </tr>
-      </table>
+      <div class="post-cont">
+        <form action="#" name="my-form">
+          <div class="f-title">Add post</div>
+          <div class="f-fields">
+            <ul>
+              <li>
+                <label for="tit">Title</label>
+                <input type="text" id="tit" name="tit" required />
+              </li>
+              <li>
+                <label for="desc">Description</label>
+                <input type="text" id="desc" name="desc" required />
+              </li>
+              <li>
+                <label for="content">Content</label>
+                <textarea name="content" id="cont" required></textarea>
+              </li>
+              <li class="button">
+                <input type="submit" value="Post Article" />
+                <div class="file">
+                  <input type="file" name="file" id="file" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
     </div>
 
     <!-- 
