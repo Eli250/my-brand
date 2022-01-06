@@ -215,6 +215,7 @@ label #sidebar-btn:hover {
   color: #fff;
   margin-left: 250px;
 }
+
 .p-content table {
   margin-top: 100px;
   margin-left: 250px;
@@ -241,6 +242,17 @@ label #sidebar-btn:hover {
 .p-content #new-post a:hover {
   color: crimson;
 }
+#post-tbl {
+  background: none;
+}
+#new-post {
+  display: inline;
+  background: crimson;
+  height: 30px;
+  width: 300px;
+}
+#new-post a {
+}
 .content-table {
   border-collapse: collapse;
   margin: 25px 0px;
@@ -263,6 +275,9 @@ label #sidebar-btn:hover {
 }
 .content-table tbody tr {
   border-bottom: 1px solid #dddddd;
+}
+.content-table tbody tr:nth-of-type(odd) {
+  color: white;
 }
 .content-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;

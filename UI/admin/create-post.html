@@ -33,7 +33,7 @@
         <a href="dashboard.html"
           ><i class="fas fa-desktop"></i><span>Dashboard</span>
         </a>
-        <a href=""><i class="fas fa-cogs"></i><span>Posts</span></a>
+        <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
         <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
         <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
       </div>
@@ -46,7 +46,7 @@
       <a href="dashboard.html"
         ><i class="fas fa-desktop"></i><span>Dashboard</span>
       </a>
-      <a href=""><i class="fas fa-cogs"></i><span>Posts</span></a>
+      <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
       <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
       <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
     </div>
@@ -89,10 +89,14 @@
 
      -->
     <script type="text/javascript">
-      $(document).ready(function () {
-        $('.nav-btn').click(function () {
-          $('.mobile-nav-items').toggleClass('active');
-        });
+      document.addEventListener('DOMContentLoaded', function (event) {
+        document
+          .querySelector('.nav-btn')
+          .addEventListener('click', function () {
+            document
+              .querySelector('.mobile-nav-items')
+              .classList.toggle('active');
+          });
       });
     </script>
   </body>
