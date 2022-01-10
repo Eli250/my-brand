@@ -1,0 +1,122 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <title>Admin | Posts</title>
+  </head>
+  <body>
+    <input type="checkbox" id="check" />
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar-btn"></i>
+      </label>
+      <div class="left-area">
+        <h3>Admin <span>Panel</span></h3>
+      </div>
+      <div class="right-area">
+        <a href="../../index.html" class="logout-btn">Signout</a>
+      </div>
+    </header>
+    <div class="mobile-nav">
+      <div class="nav-bar">
+        <img class="mobile-profile-pic" src="../images/Eli-2.jpg" alt="" />
+        <i class="fa fa-bars nav-btn"> </i>
+      </div>
+      <div class="mobile-nav-items">
+        <a href="dashboard.html"
+          ><i class="fas fa-desktop"></i><span>Dashboard</span>
+        </a>
+        <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
+        <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
+        <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="profile-pic">
+        <img src="../../UI/images/Eli-2.jpg" alt="" class="profile-img" />
+        <h4>Eli Hirwa</h4>
+      </div>
+      <a href="dashboard.html"
+        ><i class="fas fa-desktop"></i><span>Dashboard</span>
+      </a>
+      <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
+      <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
+      <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+    </div>
+    <div class="content">
+      <div id="title">Home | Posts | Manage Posts | Add Post</div>
+
+      <div class="post-cont">
+        <form action="#" name="my-form">
+          <div class="f-title">Add post</div>
+          <div class="f-fields">
+            <ul>
+              <li>
+                <label for="tit">Title</label>
+                <input
+                  type="text"
+                  id="tit"
+                  name="tit"
+                  required
+                  value="New Treding macBook Pro"
+                />
+              </li>
+              <li>
+                <label for="desc">Description</label>
+                <input
+                  type="text"
+                  id="desc"
+                  name="desc"
+                  required
+                  value="Lorem ipsum dolor sit amet consectetur."
+                />
+              </li>
+              <li>
+                <label for="content">Content</label>
+                <textarea name="content" id="cont" required>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+Minus vero ipsam fuga, totam ex expedita optio aliquam quidem odit maxime odio suscipit dignissimos quis eius accusamus explicabo. Quia temporibus fugiat voluptate fugit, nulla accusamus rem explicabo nam, eum odio accusantium suscipit! 
+Natus vitae impedit numquam ad quo odit in ab totam animi, officiis possimus necessitatibus deserunt ipsa fugiat eum quia et voluptatum! Velit error obcaecati totam fugit inventore labore laboriosam, necessitatibus quibusdam vitae at! 
+
+Eius molestias at corrupti inventore pariatur quasi ipsa voluptate temporibus reiciendis deserunt. Tempora omnis libero possimus ipsam dolor hic est nesciunt incidunt error, amet reprehenderit ad recusandae non a exercitationem iusto ullam sapiente debitis commodi voluptates officiis nisi. Culpa cumque, placeat eligendi laborum debitis molestiae officiis?
+                </textarea>
+              </li>
+              <li class="button">
+                <input type="submit" value="Post Article" />
+                <input type="reset" value="Cancel" />
+                <div class="file">
+                  <input type="file" name="file" id="file" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 
+
+
+
+
+     -->
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function (event) {
+        document
+          .querySelector('.nav-btn')
+          .addEventListener('click', function () {
+            document
+              .querySelector('.mobile-nav-items')
+              .classList.toggle('active');
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -4,12 +4,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/dashboard.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script> -->
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     />
-    <title>Admin Panel</title>
+    <title>Admin | Posts</title>
   </head>
   <body>
     <input type="checkbox" id="check" />
@@ -34,8 +34,8 @@
           ><i class="fas fa-desktop"></i><span>Dashboard</span>
         </a>
         <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
-        <a href="#"><i class="fas fa-table"></i><span>Comments</span></a>
-        <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+        <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
+        <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
       </div>
     </div>
     <div class="sidebar">
@@ -47,32 +47,47 @@
         ><i class="fas fa-desktop"></i><span>Dashboard</span>
       </a>
       <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
-      <a href="#"><i class="fas fa-table"></i><span>Comments</span></a>
-      <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+      <a href=""><i class="fas fa-table"></i><span>Comments</span></a>
+      <a href=""><i class="fas fa-sliders-h"></i><span>Settings</span></a>
     </div>
     <div class="content">
-      <div id="title">Home | Dashboard</div>
-      <div class="cards">
-        <div class="card">
-          <div class="circle">
-            <div class="number">3</div>
+      <div id="title">Home | Posts | Manage Posts | Add Post</div>
+
+      <div class="post-cont">
+        <form action="#" name="my-form">
+          <div class="f-title">Add post</div>
+          <div class="f-fields">
+            <ul>
+              <li>
+                <label for="tit">Title</label>
+                <input type="text" id="tit" name="tit" required />
+              </li>
+              <li>
+                <label for="desc">Description</label>
+                <input type="text" id="desc" name="desc" required />
+              </li>
+              <li>
+                <label for="content">Content</label>
+                <textarea name="content" id="cont" required></textarea>
+              </li>
+              <li class="button">
+                <input type="submit" value="Post Article" />
+                <div class="file">
+                  <input type="file" name="file" id="file" />
+                </div>
+              </li>
+            </ul>
           </div>
-          <div class="text">Posts</div>
-        </div>
-        <div class="card">
-          <div class="circle">
-            <div class="number">3</div>
-          </div>
-          <div class="text">Comments</div>
-        </div>
-        <div class="card">
-          <div class="circle">
-            <div class="number">3</div>
-          </div>
-          <div class="text">Views</div>
-        </div>
+        </form>
       </div>
     </div>
+
+    <!-- 
+
+
+
+
+     -->
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', function (event) {
         document

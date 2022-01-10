@@ -1,27 +1,34 @@
-$(document).ready(function(){
-    $(window).scroll(function(){
-        if(this.scrollY > 20){
-            $('.navbar').addClass("sticky");
-        }else{
-            $('.navbar').removeClass("sticky");
-        }
-        if(this.scrollY > 500){
-            $('.scroll-up-btn').addClass("show");
-        }else{
-            $('.scroll-up-btn').removeClass("show");
-        }
-    });
-    // slide-up script
-    $('.scroll-up-btn').click(function(){
-        $('html').animate({scrollTop: 0});
-        // removing smooth scroll on slide-up button click
-        $('html').css("scrollBehavior", "auto");
-    });
-    // Toggle menu / navbar script
+'use strict';
 
-    $('.menu-btn').click(function(){
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
+//Without jQuery
+document.addEventListener('DOMContentLoaded', function (event) {
+  window.onscroll = function () {
+    if (window.scrollY > 20) {
+      document.querySelector('.navbar').classList.add('sticky');
+    } else {
+      document.querySelector('.navbar').classList.remove('sticky');
+    }
+    if (window.scrollY > 500) {
+      document.querySelector('.scroll-up-btn').classList.add('show');
+    } else {
+      document.querySelector('.scroll-up-btn').classList.remove('show');
+    }
+  };
+  // slide-up script
+  document
+    .querySelector('.scroll-up-btn')
+    .addEventListener('click', function () {
+      document.body.scrollTop = 0; //For Safari
+      document.documentElement.scrollTop = 0; // Chrome, ...
     });
 
+  // Script for burger button
+  document.querySelector('.menu-btn').addEventListener(
+    'click',
+    function () {
+      document.querySelector('.navbar .menu').classList.toggle('active');
+      document.querySelector('.menu-btn i').classList.toggle('active');
+    },
+    false
+  );
 });
