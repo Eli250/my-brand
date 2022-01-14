@@ -478,6 +478,17 @@ body {
   height: 80px;
   width: 100%;
 }
+/* Validation message label */
+.contact .right form label {
+  display: flex;
+  color: crimson;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  transition: 0.5s;
+  transition-property: color;
+}
 .contact .right form .name {
   margin-right: 10px;
 }
