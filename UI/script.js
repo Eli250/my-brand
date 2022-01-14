@@ -45,7 +45,7 @@ let senderObj = {};
 const sendMessage = () => {
   if (validateContactInput()) {
     console.log('Please fill all fields!');
-    // location.reload();
+    location.reload();
     return false;
   }
   senderObj = {
