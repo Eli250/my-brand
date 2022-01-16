@@ -5,7 +5,7 @@
     <!-- <link rel="stylesheet" href="../style.css" /> -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="../css/articles.css" />
-    <script src="../script.js"></script>
+    <!-- <script src="../script.js"></script> -->
     <title>Article1</title>
   </head>
   <body>
@@ -66,8 +66,8 @@
             </p>
           </div>
           <div class="line"></div>
-          <div class="column left">
-            <div class="comment-header"><span>5</span> Comments</div>
+          <div class="column left" id="comment-div">
+            <!-- <div class="comment-header"><span>1</span> Comments</div>
 
             <div class="comments">
               <p>
@@ -78,75 +78,36 @@
               <div class="comment-owner">
                 Eli Hirwa <span>| 10 Dec 2021</span>
               </div>
-            </div>
-            <div class="comments">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-                nesciunt veritatis vitae nobis?
-              </p>
-              <div class="comment-owner">
-                Eli Hirwa <span>| 10 Dec 2021</span>
-              </div>
-            </div>
-            <div class="comments">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-                nesciunt veritatis vitae nobis?
-              </p>
-              <div class="comment-owner">
-                Eli Hirwa <span>| 10 Dec 2021</span>
-              </div>
-            </div>
-            <div class="comments">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-                nesciunt veritatis vitae nobis?
-              </p>
-              <div class="comment-owner">
-                Eli Hirwa <span>| 10 Dec 2021</span>
-              </div>
-            </div>
-            <div class="comments">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-                nesciunt veritatis vitae nobis?
-              </p>
-              <div class="comment-owner">
-                Eli Hirwa <span>| 10 Dec 2021</span>
-              </div>
-            </div>
+            </div> -->
           </div>
-          <div class="column right">
+          <div class="column right" id="comment-section">
             <div class="comments">Leave a comment</div>
-            <form action="#">
+            <form name="comment-form" method="post">
               <div class="field textarea">
                 <textarea
+                  name="message"
                   cols="30"
                   rows="10"
                   placeholder="Message.."
-                  required
                 ></textarea>
               </div>
-
+              <div id="error"></div>
               <div class="fields">
                 <div class="field name">
-                  <input type="text" placeholder="Name" required />
+                  <input type="text" placeholder="Name" name="name" />
                 </div>
                 <div class="field email">
-                  <input type="email" placeholder="Email" required />
+                  <input type="text" placeholder="Email" name="email" />
                 </div>
               </div>
               <div class="button">
-                <button type="submit">Post Comment</button>
+                <button type="button" onclick="validate()">Post Comment</button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </section>
+    <script src="/UI/admin/js/articles.js"></script>
   </body>
 </html>

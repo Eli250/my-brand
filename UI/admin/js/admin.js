@@ -55,14 +55,18 @@ let titErr = document.getElementById('tit-err');
 let descErr = document.getElementById('desc-err');
 let contErr = document.getElementById('cont-err');
 
-file.addEventListener('change', function () {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => {
-    url = reader.result;
-    img.setAttribute('src', url);
+try {
+  file.addEventListener('change', function () {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      url = reader.result;
+      img.setAttribute('src', url);
+    });
+    reader.readAsDataURL(this.files[0]);
   });
-  reader.readAsDataURL(this.files[0]);
-});
+} catch (error) {}
+
+let blogContainer = document.getElementById('blogContainer');
 
 function createPost() {
   if (title.value === '' || title.value < 5) {
@@ -84,7 +88,6 @@ function createPost() {
     ];
     localStorage.setItem('Posts', JSON.stringify(post));
     const stored = JSON.parse(localStorage.getItem('Posts'));
-    console.log(stored[0]);
 
     window.location.href = '../admin/posts.html';
   }

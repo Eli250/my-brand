@@ -97,3 +97,64 @@ const validateContactInput = function () {
   }
   return error;
 };
+
+//Displaying Posts on Blog Page
+function getPosts() {
+  let post = localStorage.getItem('Posts');
+  if (post === null || post.length === 0) {
+    return [];
+  }
+  return JSON.parse(post);
+}
+
+function displayPosts() {
+  let blogContainerDiv = document.querySelector('.blog-container');
+
+  let posts = getPosts();
+  console.log(posts);
+
+  posts.forEach((post) => {
+    const blogBoxDiv = document.createElement('div');
+    blogBoxDiv.className = 'blog-box';
+    let blogImageDiv = document.createElement('div');
+    blogImageDiv.className = 'blog-img';
+    const blogImage = document.createElement('img');
+    blogImage.src = post.image;
+    blogImageDiv.appendChild(blogImage);
+    blogBoxDiv.appendChild(blogImageDiv);
+    blogContainerDiv.appendChild(blogBoxDiv);
+
+    const blogtextDiv = document.createElement('div');
+    blogtextDiv.className = 'blog-text';
+    let blogSpan = document.createElement('span');
+    let spantext = document.createTextNode(post.datePosted);
+    blogSpan.appendChild(spantext);
+    blogtextDiv.appendChild(blogSpan);
+
+    blogContainerDiv.appendChild(blogtextDiv);
+
+    const blogTitleDiv = document.createElement('div');
+    blogTitleDiv.className = 'blog-title';
+    let title = document.createTextNode(post.title);
+    blogTitleDiv.appendChild(title);
+    blogtextDiv.appendChild(blogTitleDiv);
+    blogBoxDiv.appendChild(blogtextDiv);
+
+    const blogPara = document.createElement('p');
+    let content = document.createTextNode(post.description);
+    blogPara.appendChild(content);
+    blogtextDiv.appendChild(blogPara);
+    blogBoxDiv.appendChild(blogtextDiv);
+
+    const actionBtnDiv = document.createElement('div');
+    actionBtnDiv.className = 'action-btn';
+    let readMoreLink = document.createElement('a');
+    readMoreLink.href = 'UI/articles/articles.html';
+    let linkValue = document.createTextNode('Read More');
+    readMoreLink.appendChild(linkValue);
+
+    blogtextDiv.appendChild(readMoreLink);
+    blogBoxDiv.appendChild(blogtextDiv);
+  });
+}
+displayPosts();
