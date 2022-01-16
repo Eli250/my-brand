@@ -251,8 +251,7 @@ label #sidebar-btn:hover {
   height: 30px;
   width: 300px;
 }
-#new-post a {
-}
+
 .content-table {
   border-collapse: collapse;
   margin: 25px 0px;
@@ -346,7 +345,7 @@ form {
   height: 60%;
   resize: none;
 }
-.content .post-cont form input[type='submit'] {
+.content .post-cont form input[type='button'] {
   margin-left: 10px;
   padding: 5px;
   background: crimson;
@@ -360,10 +359,14 @@ form {
   transition-property: color;
   cursor: pointer;
 }
-.content .post-cont form input[type='submit']:hover {
+.content .post-cont form input[type='button']:hover {
   border: 1.5px crimson solid;
   background: none;
   color: crimson;
+}
+.error {
+  color: crimson;
+  font-size: 18px;
 }
 .file {
   display: inline-block;

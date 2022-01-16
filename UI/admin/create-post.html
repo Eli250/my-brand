@@ -54,24 +54,33 @@
       <div id="title">Home | Posts | Manage Posts | Add Post</div>
 
       <div class="post-cont">
-        <form action="#" name="my-form">
+        <form name="post-form" method="post">
           <div class="f-title">Add post</div>
           <div class="f-fields">
             <ul>
               <li>
                 <label for="tit">Title</label>
-                <input type="text" id="tit" name="tit" required />
+
+                <span class="error" id="tit-err"></span>
+                <input type="text" id="tit" name="tit" />
               </li>
               <li>
                 <label for="desc">Description</label>
-                <input type="text" id="desc" name="desc" required />
+                <span class="error" id="desc-err"></span>
+                <input type="text" id="desc" name="desc" />
               </li>
               <li>
                 <label for="content">Content</label>
-                <textarea name="content" id="cont" required></textarea>
+                <span class="error" id="cont-err"></span>
+                <textarea name="content" id="cont"></textarea>
               </li>
+              <img id="imgPreview" src="" alt="Image" />
               <li class="button">
-                <input type="submit" value="Post Article" />
+                <input
+                  type="button"
+                  value="Post Article"
+                  onclick="createPost();"
+                />
                 <div class="file">
                   <input type="file" name="file" id="file" />
                 </div>
@@ -99,5 +108,6 @@
           });
       });
     </script>
+    <script src="js/admin.js"></script>
   </body>
 </html>
