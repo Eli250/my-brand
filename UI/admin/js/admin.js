@@ -1,6 +1,12 @@
 let userCredential = {};
 let mailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+let verifyStoredUser = [];
+if (window.localStorage.getItem('Posts') === null) {
+  window.localStorage.setItem('Posts', JSON.stringify(verifyStoredUser));
+}
+verifyStoredUser = window.localStorage.getItem('userCredential');
+
 function login() {
   var username = document.forms['myForm']['uname'].value;
   var password = document.forms['myForm']['passwd'].value;
@@ -12,8 +18,6 @@ function login() {
   } else if (password === '' || password.length < 5) {
     err.innerText = 'Invalid Password!';
   } else {
-    let verifyStoredUser = window.localStorage.getItem('userCredential');
-
     if (verifyStoredUser == null) {
       userCredential = {
         username: username,
@@ -66,6 +70,13 @@ try {
   });
 } catch (error) {}
 
+let posts = [];
+
+if (window.localStorage.getItem('Posts') === null) {
+  window.localStorage.setItem('Posts', JSON.stringify(posts));
+}
+posts = JSON.parse(localStorage.getItem('Posts'));
+
 let blogContainer = document.getElementById('blogContainer');
 
 function createPost() {
@@ -77,16 +88,17 @@ function createPost() {
     contErr.innerText = 'Plese Fill in the post content!';
   } else {
     let postedOn = Date();
-    let post = [
-      {
-        title: title.value,
-        description: desc.value,
-        content: cont.value,
-        image: url,
-        datePosted: postedOn,
-      },
-    ];
-    localStorage.setItem('Posts', JSON.stringify(post));
+
+    let post = {
+      ID: `post-${posts.length + 1}`,
+      title: title.value,
+      description: desc.value,
+      content: cont.value,
+      image: url,
+      datePosted: postedOn,
+    };
+    posts.push(post);
+    localStorage.setItem('Posts', JSON.stringify(posts));
     const stored = JSON.parse(localStorage.getItem('Posts'));
 
     window.location.href = '../admin/posts.html';
