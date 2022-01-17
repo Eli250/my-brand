@@ -96,6 +96,7 @@ function createPost() {
       content: cont.value,
       image: url,
       datePosted: postedOn,
+      postOwner: 'Eli Hirwa',
     };
     posts.push(post);
     localStorage.setItem('Posts', JSON.stringify(posts));

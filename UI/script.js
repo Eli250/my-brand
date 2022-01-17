@@ -116,8 +116,10 @@ function displayPosts() {
   posts.forEach((post) => {
     const blogBoxDiv = document.createElement('div');
     blogBoxDiv.className = 'blog-box';
+    blogBoxDiv.id = post.ID;
     let blogImageDiv = document.createElement('div');
     blogImageDiv.className = 'blog-img';
+
     const blogImage = document.createElement('img');
     blogImage.src = post.image;
     blogImageDiv.appendChild(blogImage);
@@ -126,8 +128,8 @@ function displayPosts() {
 
     const blogtextDiv = document.createElement('div');
     blogtextDiv.className = 'blog-text';
-    let blogSpan = document.createElement('span');
-    let spantext = document.createTextNode(post.datePosted);
+    const blogSpan = document.createElement('span');
+    const spantext = document.createTextNode(post.datePosted);
     blogSpan.appendChild(spantext);
     blogtextDiv.appendChild(blogSpan);
 
