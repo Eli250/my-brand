@@ -202,6 +202,22 @@ label #sidebar-btn:hover {
   justify-content: center;
   align-content: center;
 }
+.messages {
+  display: block;
+  margin-top: 25px;
+  /* border: 1px solid black; */
+  /* height: 15%; */
+  width: calc(100% - 40px);
+}
+.messages .msg {
+  padding: 10px 10px;
+}
+.messages .sender {
+  padding: 10px 10px;
+}
+.messages .date {
+  padding: 10px 10px;
+}
 .content .card .text {
   display: flex;
   font-weight: 600;

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -197,11 +198,7 @@
           </div>
           <div class="column right">
             <div class="text">Message me</div>
-            <form
-              action="#"
-              name="contact-form"
-              onsubmit="return sendMessage();"
-            >
+            <form action="#" id="form-contact" name="contact-form">
               <!-- Label for warninf messages -->
               <label id="info-message"></label>
               <div class="fields">
@@ -242,5 +239,10 @@
     </footer>
 
     <script src="UI/script.js"></script>
+
+    <!-- UUID -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+
+    <!-- Displaying Time In Moments -->
   </body>
 </html>
