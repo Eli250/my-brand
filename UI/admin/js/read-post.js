@@ -70,7 +70,12 @@ postData.forEach((post) => {
 
   const commentsDiv = document.createElement('div');
   commentsDiv.classList.add('column', 'left');
-  const comments = getComments();
+
+  allComments = getComments();
+
+  const comments = allComments.filter((item) => {
+    return (item.PostId = id);
+  });
   const commentHeaderDiv = document.createElement('div');
   commentHeaderDiv.className = 'comment-header';
   let span = document.createElement('span');

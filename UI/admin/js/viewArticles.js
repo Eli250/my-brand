@@ -59,6 +59,26 @@ function displayPosts() {
     actionBtnDiv.appendChild(deleteBtn);
     blogtextDiv.appendChild(actionBtnDiv);
     blogBoxDiv.appendChild(blogtextDiv);
+
+    updateBtn.addEventListener('click', function (event) {
+      const pId = event.target.value;
+      location.assign(`create-post.html#${post.ID}`);
+    });
+
+    deleteBtn.addEventListener('click', function (event) {
+      const artId = event.target.value;
+      const posts = getPosts();
+      const filteredPosts = posts.filter((p) => {
+        return p.ID !== artId;
+      });
+      if (window.confirm(`Are you sure to delete post?`)) {
+        localStorage.setItem('Posts', JSON.stringify(filteredPosts));
+        location.reload();
+      } else {
+        localStorage.setItem('Posts', JSON.stringify(posts));
+        location.reload();
+      }
+    });
   });
 }
 displayPosts();
