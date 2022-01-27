@@ -1,7 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: "poppins", sans-serif;
+  font-family: 'poppins', sans-serif;
   box-sizing: border-box;
 }
 a {
@@ -13,7 +13,7 @@ ul {
 body {
   margin: 0;
   padding: 0px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 #blog {
   display: flex;
@@ -54,43 +54,42 @@ body {
   width: 100%;
   height: auto;
 }
-.blog-img img{
-    width: 100%
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
-.blog-text{
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
+.blog-text {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
-.blog-text span{
-    color: crimson;
+.blog-text span {
+  color: crimson;
 }
-.blog-text .blog-title{
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #222;
+.blog-text .blog-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #222;
 }
-.blog-text .blog-title:hover{
-    color: rgb(53, 41, 44);
-    
+.blog-text .blog-title:hover {
+  color: rgb(53, 41, 44);
 }
-.blog-text p{
-    color: #9b9b9b;
-    font-size: 0.9rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 20px 0px;
+.blog-text p {
+  color: #9b9b9b;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 20px 0px;
 }
-.blog-text a{
-    color: #0f0f0f;
+.blog-text a {
+  color: #0f0f0f;
 }
-.blog-text a:hover{
-    color: crimson;
-    transition: all 0.3s ease;
+.blog-text a:hover {
+  color: crimson;
+  transition: all 0.3s ease;
 }

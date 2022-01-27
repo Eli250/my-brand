@@ -1,11 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="../style.css" /> -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="../css/articles.css" />
-    <script src="../script.js"></script>
     <title>Article1</title>
   </head>
   <body>
@@ -29,8 +28,8 @@
       </div>
     </nav>
     <section class="post" id="post">
-      <div class="max-width">
-        <h2 class="title">New Trending MacBook Pro</h2>
+      <div class="max-width" id="my-post">
+        <!-- <h2 class="title">New Trending MacBook Pro</h2>
         <h4 class="sub-title">Eli Hirwa <span>| 10 Dec 2021 |</span></h4>
         <div class="post-content">
           <div class="post-img">
@@ -65,50 +64,11 @@
               consequuntur adipisci eligendi?
             </p>
           </div>
-          <div class="line"></div>
-          <div class="column left">
-            <div class="comment-header"><span>5</span> Comments</div>
 
-            <div class="comments">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-                nesciunt veritatis vitae nobis?
-              </p>
-              <div class="comment-owner">
-                Eli Hirwa <span>| 10 Dec 2021</span>
-              </div>
-            </div>
-            <div class="comments">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-                nesciunt veritatis vitae nobis?
-              </p>
-              <div class="comment-owner">
-                Eli Hirwa <span>| 10 Dec 2021</span>
-              </div>
-            </div>
-            <div class="comments">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-                nesciunt veritatis vitae nobis?
-              </p>
-              <div class="comment-owner">
-                Eli Hirwa <span>| 10 Dec 2021</span>
-              </div>
-            </div>
-            <div class="comments">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-                nesciunt veritatis vitae nobis?
-              </p>
-              <div class="comment-owner">
-                Eli Hirwa <span>| 10 Dec 2021</span>
-              </div>
-            </div>
+          <div class="line"></div>
+
+          <div class="column left" id="comment-div">
+            <div class="comment-header"><span>5</span> Comments</div>
             <div class="comments">
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -120,33 +80,35 @@
               </div>
             </div>
           </div>
-          <div class="column right">
+          <div class="column right" id="comment-section">
             <div class="comments">Leave a comment</div>
-            <form action="#">
+            <form name="comment-form" method="post">
               <div class="field textarea">
                 <textarea
+                  name="message"
                   cols="30"
                   rows="10"
                   placeholder="Message.."
-                  required
                 ></textarea>
               </div>
-
+              <div id="error"></div>
               <div class="fields">
                 <div class="field name">
-                  <input type="text" placeholder="Name" required />
+                  <input type="text" placeholder="Name" name="name" />
                 </div>
                 <div class="field email">
-                  <input type="email" placeholder="Email" required />
+                  <input type="text" placeholder="Email" name="email" />
                 </div>
               </div>
               <div class="button">
-                <button type="submit">Post Comment</button>
+                <button type="button" onclick="validate()">Post Comment</button>
               </div>
             </form>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
+    <script src="/UI/admin/js/articles.js"></script>
+    <script src="/UI/admin/js/read-post.js"></script>
   </body>
 </html>

@@ -10,6 +10,7 @@
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     />
     <title>Admin Panel</title>
+    <script src="../admin/js/admin.js"></script>
   </head>
   <body>
     <input type="checkbox" id="check" />
@@ -21,7 +22,9 @@
         <h3>Admin <span>Panel</span></h3>
       </div>
       <div class="right-area">
-        <a href="../../index.html" class="logout-btn">Signout</a>
+        <a href="../admin/signin.html" class="logout-btn" onclick="logout()"
+          >Signout</a
+        >
       </div>
     </header>
     <div class="mobile-nav">
@@ -34,7 +37,9 @@
           ><i class="fas fa-desktop"></i><span>Dashboard</span>
         </a>
         <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
-        <a href="#"><i class="fas fa-table"></i><span>Comments</span></a>
+        <a href="display-messages.html"
+          ><i class="fas fa-table"></i><span>Queries</span></a
+        >
         <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
       </div>
     </div>
@@ -47,7 +52,9 @@
         ><i class="fas fa-desktop"></i><span>Dashboard</span>
       </a>
       <a href="posts.html"><i class="fas fa-cogs"></i><span>Posts</span></a>
-      <a href="#"><i class="fas fa-table"></i><span>Comments</span></a>
+      <a href="display-messages.html"
+        ><i class="fas fa-table"></i><span>Queries</span></a
+      >
       <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
     </div>
     <div class="content">

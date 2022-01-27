@@ -4,19 +4,21 @@
     <meta charset="utf-8" />
     <title>Admin Signin</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/script.js"></script>
+    <script src="js/admin.js"></script>
   </head>
   <body>
     <div class="center">
       <h1>Login</h1>
+
       <form name="myForm" method="post">
+        <p id="warning"></p>
         <div class="txt_field">
-          <input type="text" name="uname" required />
+          <input type="email" name="uname" />
           <span></span>
           <label>Username</label>
         </div>
         <div class="txt_field">
-          <input type="password" name="passwd" required />
+          <input type="password" name="passwd" />
           <span></span>
           <label>Password</label>
         </div>
