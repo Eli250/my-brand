@@ -1,11 +1,9 @@
 let title = document.getElementById('tit');
-let desc = document.getElementById('desc');
 let cont = document.getElementById('cont');
 let file = document.getElementById('file');
 let img = document.querySelector('#imgPreview');
 let url;
 let titErr = document.getElementById('tit-err');
-let descErr = document.getElementById('desc-err');
 let contErr = document.getElementById('cont-err');
 
 try {
@@ -19,12 +17,18 @@ try {
   });
 } catch (error) {}
 
-let posts = [];
+const token = JSON.parse(localStorage.getItem('AccessToken'));
 
-if (window.localStorage.getItem('Posts') === null) {
-  window.localStorage.setItem('Posts', JSON.stringify(posts));
-}
-posts = JSON.parse(localStorage.getItem('Posts'));
+const postData = async (url = '', data = {}) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: data,
+  });
+  return response.json();
+};
 
 let blogContainer = document.getElementById('blogContainer');
 
@@ -32,52 +36,82 @@ const postForm = document.querySelector('#post-form');
 const id = location.hash.split('').slice(1, location.hash.length).join('');
 
 const pBtn = document.getElementById('pBtn');
-const postUpdate = posts.filter((p) => p.ID === id);
 
-if (id !== 0) {
-  title.value = postUpdate[0].title;
-  desc.value = postUpdate[0].description;
-  cont.value = postUpdate[0].content;
-  pBtn.value = 'Update Post';
+const getResources = async () => {
+  const response = await fetch(
+    `https://develi-api.herokuapp.com/api/v1/articles/${id}`
+  );
+
+  if (response.status !== 200) throw new Error('Cannot fetch data.');
+
+  const data = await response.json();
+  return data;
+};
+
+if (id.length !== 0) {
+  getResources()
+    .then((data) => {
+      title.value = data.data.title;
+      cont.value = data.data.content;
+      img.setAttribute('src', data.data.image);
+      pBtn.value = 'Update Post';
+    })
+    .catch((err) => console.log('Rejected: ', err.message));
 }
+const updateData = async (url = '', data = {}) => {
+  const response = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: data,
+  });
+  return response.json();
+};
 
 function createPost() {
   if (title.value === '' || title.value < 5) {
     titErr.innerText = 'Please enter a valid tittle';
-  } else if (desc.value === '' || desc.value < 10) {
-    descErr.innerText = 'Enter Description of the post!';
   } else if (cont.value === '') {
     contErr.innerText = 'Plese Fill in the post content!';
   } else {
+    let readFile = document.getElementById('file').files[0];
+    const article = new FormData();
+    article.append('title', title.value);
+    article.append('content', cont.value);
+    article.append('image', readFile);
     if (id.length === 0) {
-      let postedOn = Date();
-
-      let post = {
-        ID: `post-${posts.length + 1}`,
-        title: title.value,
-        description: desc.value,
-        content: cont.value,
-        image: url,
-        datePosted: postedOn,
-        postOwner: 'Eli Hirwa',
-      };
-      posts.push(post);
-      localStorage.setItem('Posts', JSON.stringify(posts));
-      const stored = JSON.parse(localStorage.getItem('Posts'));
-
-      window.location.href = `../admin/posts.html`;
-    } else {
-      posts.forEach((p) => {
-        if (p.ID === id) {
-          p.title = title.value;
-          p.description = desc.value;
-          p.content = cont.value;
+      postData(
+        'https://develi-api.herokuapp.com/api/v1/articles',
+        article
+      ).then((data) => {
+        if (data.message === 'Article Created!') {
+          window.location.href = '../admin/posts.html';
+        } else {
+          console.log(data);
+          titErr.innerText = data.message;
         }
       });
-      localStorage.setItem('Posts', JSON.stringify(posts));
-      alert('Post Updated!');
-      console.log(posts);
-      location.assign(`../admin/posts.html#${id}`);
+    } else {
+      console.log('Updating...');
+
+      let readFile = document.getElementById('file').files[0];
+
+      const updateArt = new FormData();
+      updateArt.append('title', title.value);
+      updateArt.append('content', cont.value);
+      updateArt.append('image', readFile);
+      updateData(
+        `https://develi-api.herokuapp.com/api/v1/articles/${id}`,
+        updateArt
+      ).then((data) => {
+        // console.log(data);
+        if (data.message === 'Article Created!') {
+          location.assign(`../admin/posts.html#${id}`);
+        } else {
+          alert(data.message);
+        }
+      });
     }
   }
 }

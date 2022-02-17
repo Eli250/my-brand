@@ -20,12 +20,24 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(SuccessfullLookup);
 }
 
+const postData = async (url = '', data = {}) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/JSON,text/plain,*/*,',
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
 const sendMessage = () => {
-  let queries = [];
-  if (window.localStorage.getItem('Queries') === null) {
-    window.localStorage.setItem('Queries', JSON.stringify(queries));
-  }
-  queries = JSON.parse(localStorage.getItem('Queries'));
+  // let queries = [];
+  // if (window.localStorage.getItem('Queries') === null) {
+  //   window.localStorage.setItem('Queries', JSON.stringify(queries));
+  // }
+  // queries = JSON.parse(localStorage.getItem('Queries'));
 
   const form = document.querySelector('#form-contact');
   form.addEventListener('submit', function (e) {
@@ -71,24 +83,18 @@ const sendMessage = () => {
       infoMessage.innerHTML = '';
     }
 
-    let query = {
-      ID: uuidv4(),
-      sender: sender,
-      email: email,
+    const query = {
+      senderName: sender,
       subject: subj,
       message: message,
-      exactLocation,
-      date: new Date(),
+      email: email,
     };
-
-    queries.push(query);
-    window.localStorage.setItem('Queries', JSON.stringify(queries));
-
-    alert('Query Sent Successfully!');
-    location.reload();
-
-    const stored = JSON.parse(localStorage.getItem('Queries'));
-    console.log(stored);
+    postData('http://develi-api.herokuapp.com/api/v1/queries', query).then(
+      (data) => {
+        if (data.message === 'Query Created!:') alert(data.message);
+        location.reload();
+      }
+    );
   });
 };
 

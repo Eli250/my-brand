@@ -1,21 +1,26 @@
+let mailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+let sender = '';
+let email = '';
+let message = '';
+let err = '';
+
 const id = location.hash.split('').slice(1, location.hash.length).join('');
-let postList = localStorage.getItem('Posts');
-console.log(postList);
-postList = JSON.parse(postList);
 
-const postData = postList.filter((item) => {
-  return item.ID === id;
-});
+const token = JSON.parse(localStorage.getItem('AccessToken'));
 
-function getComments() {
-  let comment = localStorage.getItem('Comments');
-  if (comment === null || post.length === 0) {
-    return [];
-  }
-  return JSON.parse(comment);
-}
+const getResources = async () => {
+  const response = await fetch(
+    `http://develi-api.herokuapp.com/api/v1/articles/${id}`
+  );
 
-postData.forEach((post) => {
+  if (response.status !== 200) throw new Error('Cannot fetch data.');
+
+  const data = await response.json();
+  return data;
+};
+
+getResources().then((data) => {
+  console.log(data);
   const body = document.querySelector('body');
   const postSection = document.createElement('section');
   postSection.classList.add('post');
@@ -25,14 +30,15 @@ postData.forEach((post) => {
 
   const postTitle = document.createElement('h2');
   postTitle.classList.add('title');
-  const titleContent = document.createTextNode(post.title);
+  const titleContent = document.createTextNode(data.data.title);
   postTitle.appendChild(titleContent);
   const subTitle = document.createElement('h4');
   subTitle.classList.add('sub-title');
-  const postOwner = document.createTextNode(post.postOwner);
+  const postOwner = document.createTextNode(data.data.author);
   subTitle.appendChild(postOwner);
   const pSpan = document.createElement('span');
-  const pDate = document.createTextNode(` | ${post.datePosted} |`);
+
+  const pDate = document.createTextNode(` | ${data.data.created_on} |`);
   pSpan.appendChild(pDate);
   subTitle.appendChild(pSpan);
 
@@ -42,14 +48,14 @@ postData.forEach((post) => {
   const divPostImg = document.createElement('div');
   divPostImg.className = 'post-img';
   const img = document.createElement('img');
-  img.src = post.image;
+  img.src = data.data.image;
   divPostImg.appendChild(img);
   divPostContent.appendChild(divPostImg);
 
   const descDiv = document.createElement('div');
   descDiv.id = 'description';
   const descH5 = document.createElement('h5');
-  const descContent = document.createTextNode(post.description);
+  const descContent = document.createTextNode(data.data.content);
   descH5.appendChild(descContent);
   descDiv.appendChild(descH5);
   divPostContent.appendChild(descDiv);
@@ -57,7 +63,7 @@ postData.forEach((post) => {
   const postDetailDiv = document.createElement('div');
   postDetailDiv.className = 'post-details';
   const p = document.createElement('p');
-  const pContent = document.createTextNode(post.content);
+  const pContent = document.createTextNode(data.data.content);
   p.appendChild(pContent);
   postDetailDiv.appendChild(p);
   divPostContent.appendChild(postDetailDiv);
@@ -71,39 +77,49 @@ postData.forEach((post) => {
   const commentsDiv = document.createElement('div');
   commentsDiv.classList.add('column', 'left');
 
-  allComments = getComments();
+  const readComments = async () => {
+    const response = await fetch(
+      `http://develi-api.herokuapp.com/api/v1/articles/${id}/comments`
+    );
 
-  const comments = allComments.filter((item) => {
-    return (item.PostId = id);
-  });
+    if (response.status !== 200) throw new Error('Cannot fetch data.');
+
+    const data = await response.json();
+    return data;
+  };
+
   const commentHeaderDiv = document.createElement('div');
   commentHeaderDiv.className = 'comment-header';
   let span = document.createElement('span');
-  let spanContent = document.createTextNode(comments.length);
+  let spanContent = document.createTextNode(data.data.comments.length);
   span.appendChild(spanContent);
   commentHeaderDiv.appendChild(span);
   let commentHeader = document.createTextNode(' Comments');
   commentHeaderDiv.appendChild(commentHeader);
   commentsDiv.appendChild(commentHeaderDiv);
-  comments.forEach((comment) => {
-    let cDiv = document.createElement('div');
-    cDiv.className = 'comments';
-    let para = document.createElement('p');
-    let pComment = document.createTextNode(comment.Comment);
-    para.appendChild(pComment);
-    cDiv.appendChild(para);
-    commentsDiv.appendChild(cDiv);
 
-    const commentOwnerDiv = document.createElement('div');
-    commentOwnerDiv.className = 'comment-owner';
-    let sender = document.createTextNode(comment.Sender);
-    commentOwnerDiv.appendChild(sender);
-    let cOwnerSpan = document.createElement('span');
-    let date = document.createTextNode(' | ' + comment.Date);
-    cOwnerSpan.appendChild(date);
-    commentOwnerDiv.appendChild(cOwnerSpan);
-    cDiv.appendChild(commentOwnerDiv);
-    divPostContent.appendChild(commentsDiv);
+  readComments().then((com) => {
+    console.log(com);
+    com.forEach((comment) => {
+      let cDiv = document.createElement('div');
+      cDiv.className = 'comments';
+      let para = document.createElement('p');
+      let pComment = document.createTextNode(comment.comment);
+      para.appendChild(pComment);
+      cDiv.appendChild(para);
+      commentsDiv.appendChild(cDiv);
+
+      const commentOwnerDiv = document.createElement('div');
+      commentOwnerDiv.className = 'comment-owner';
+      let sender = document.createTextNode(comment.sender);
+      commentOwnerDiv.appendChild(sender);
+      let cOwnerSpan = document.createElement('span');
+      let date = document.createTextNode(' | ' + new Date());
+      cOwnerSpan.appendChild(date);
+      commentOwnerDiv.appendChild(cOwnerSpan);
+      cDiv.appendChild(commentOwnerDiv);
+      divPostContent.appendChild(commentsDiv);
+    });
   });
 
   const commentFormDiv = document.createElement('div');
@@ -178,20 +194,24 @@ postData.forEach((post) => {
   postSection.appendChild(myPostDiv);
 
   body.appendChild(postSection);
+
+  sender = document.forms['comment-form']['name'];
+  email = document.forms['comment-form']['email'];
+  message = document.forms['comment-form']['message'];
+  err = document.getElementById('error');
 });
-console.log(post);
 
-let mailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-let sender = document.forms['comment-form']['name'];
-let email = document.forms['comment-form']['email'];
-let message = document.forms['comment-form']['message'];
-let err = document.getElementById('error');
-
-let comments = [];
-if (window.localStorage.getItem('Comments') === null) {
-  window.localStorage.setItem('Comments', JSON.stringify(comments));
-}
-comments = JSON.parse(localStorage.getItem('Comments'));
+const postData = async (url = '', data = {}) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/JSON,text/plain,*/*,',
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
 
 const validate = function () {
   if (sender.value === '' || sender.value < 3) {
@@ -204,21 +224,14 @@ const validate = function () {
     //Getting Current Date and time
     let date = new Date();
 
-    let comment = {
-      ID: comments.length + 1,
-      Comment: message.value,
-      Sender: sender.value,
-      Email: email.value,
-      Date: date,
-      PostId: postData,
-    };
-    comments.push(comment);
-    window.localStorage.setItem('Comments', JSON.stringify(comments));
-
-    alert('Comment Sent!');
-    location.reload();
-
-    const stored = JSON.parse(localStorage.getItem('Comments'));
-    console.log(stored);
+    postData(`http://develi-api.herokuapp.com/api/v1/articles/${id}/comments`, {
+      comment: message.value,
+      email: email.value,
+      sender: sender.value,
+    }).then((data) => {
+      console.log(data);
+      alert('Comment Sent!');
+      location.reload();
+    });
   }
 };
