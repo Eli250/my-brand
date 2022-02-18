@@ -54,10 +54,13 @@ function getPosts() {
   }
   return JSON.parse(post);
 }
-function displayPosts() {
+let pieSpinner = document.querySelector('.lds-dual-ring');
+async function displayPosts() {
   let blogContainerDiv = document.querySelector('.blog-container');
 
-  getResources()
+  pieSpinner.style.display = 'inline-block';
+
+  await getResources()
     .then((data) => {
       data.data.forEach((post) => {
         const blogBoxDiv = document.createElement('div');
@@ -103,6 +106,8 @@ function displayPosts() {
 
         blogtextDiv.appendChild(readMoreLink);
         blogBoxDiv.appendChild(blogtextDiv);
+
+        pieSpinner.style.display = 'none';
       });
     })
     .catch((err) => console.log('Rejected: ', err.message));

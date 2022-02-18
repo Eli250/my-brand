@@ -143,6 +143,12 @@ label #sidebar-btn:hover {
   margin-left: 165px;
   width: 100%;
 }
+#imgPreview {
+  max-width: 20%;
+  margin-left: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+}
 .content {
   display: flex;
   flex-direction: row;
@@ -330,6 +336,7 @@ label #sidebar-btn:hover {
   background: #fff;
   width: 100%;
   max-width: 100%;
+  height: 75%;
   border-radius: 5px;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -373,7 +380,7 @@ form {
   padding: 5px;
 }
 .content .post-cont form textarea {
-  height: 60%;
+  height: 27%;
   resize: none;
 }
 .content .post-cont form input[type='button'] {

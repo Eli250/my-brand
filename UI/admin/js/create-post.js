@@ -68,8 +68,9 @@ const updateData = async (url = '', data = {}) => {
   });
   return response.json();
 };
-
-function createPost() {
+let pieSpinner = document.querySelector('.lds-dual-ring');
+async function createPost() {
+  pieSpinner.style.display = 'inline-block';
   if (title.value === '' || title.value < 5) {
     titErr.innerText = 'Please enter a valid tittle';
   } else if (cont.value === '') {
@@ -81,7 +82,7 @@ function createPost() {
     article.append('content', cont.value);
     article.append('image', readFile);
     if (id.length === 0) {
-      postData(
+      await postData(
         'https://develi-api.herokuapp.com/api/v1/articles',
         article
       ).then((data) => {
@@ -91,22 +92,22 @@ function createPost() {
           console.log(data);
           titErr.innerText = data.message;
         }
+        pieSpinner.style.display = 'none';
       });
     } else {
-      console.log('Updating...');
-
       let readFile = document.getElementById('file').files[0];
 
       const updateArt = new FormData();
       updateArt.append('title', title.value);
       updateArt.append('content', cont.value);
       updateArt.append('image', readFile);
-      updateData(
+      await updateData(
         `https://develi-api.herokuapp.com/api/v1/articles/${id}`,
         updateArt
       ).then((data) => {
         // console.log(data);
         if (data.message === 'Article Created!') {
+          pieSpinner.style.display = 'none';
           location.assign(`../admin/posts.html#${id}`);
         } else {
           alert(data.message);

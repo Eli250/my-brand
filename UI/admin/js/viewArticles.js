@@ -19,11 +19,11 @@ const deleteData = async (url = '') => {
   });
   return response.json();
 };
-
-function displayPosts() {
+let pieSpinner = document.querySelector('.lds-dual-ring');
+async function displayPosts() {
   let blogContainerDiv = document.querySelector('#blogContainer');
-
-  getResources()
+  pieSpinner.style.display = 'inline-block';
+  await getResources()
     .then((data) => {
       console.log(data);
       data.data.forEach((post) => {
@@ -92,6 +92,7 @@ function displayPosts() {
           }
         });
       });
+      pieSpinner.style.display = 'none';
     })
     .catch((err) => console.log('Rejected: ', err.message));
 }
