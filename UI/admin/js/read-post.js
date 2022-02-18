@@ -10,7 +10,7 @@ const token = JSON.parse(localStorage.getItem('AccessToken'));
 
 const getResources = async () => {
   const response = await fetch(
-    `http://develi-api.herokuapp.com/api/v1/articles/${id}`
+    `https://develi-api.herokuapp.com/api/v1/articles/${id}`
   );
 
   if (response.status !== 200) throw new Error('Cannot fetch data.');
@@ -79,7 +79,7 @@ getResources().then((data) => {
 
   const readComments = async () => {
     const response = await fetch(
-      `http://develi-api.herokuapp.com/api/v1/articles/${id}/comments`
+      `https://develi-api.herokuapp.com/api/v1/articles/${id}/comments`
     );
 
     if (response.status !== 200) throw new Error('Cannot fetch data.');
