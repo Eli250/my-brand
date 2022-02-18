@@ -4,7 +4,7 @@ const token = JSON.parse(localStorage.getItem('AccessToken'));
 
 const getResources = async () => {
   const response = await fetch(
-    `http://develi-api.herokuapp.com/api/v1/queries`,
+    `https://develi-api.herokuapp.com/api/v1/queries`,
     {
       method: 'GET',
       headers: {
