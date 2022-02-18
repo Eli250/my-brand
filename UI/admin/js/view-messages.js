@@ -26,23 +26,28 @@ getResources().then((data) => {
     messageDiv.className = 'messages';
     const msgDiv = document.createElement('div');
     msgDiv.classList.add('msg');
-    const msgContent = document.createTextNode(msg.message);
+    const msgContent = document.createTextNode('Message: ' + msg.message);
     msgDiv.appendChild(msgContent);
     messageDiv.appendChild(msgDiv);
 
     const senderDiv = document.createElement('div');
     senderDiv.className = 'sender';
 
-    const sender = document.createTextNode(msg.senderName + ' ');
+    const sender = document.createTextNode('Sender: ' + msg.senderName + ' ');
     senderDiv.appendChild(sender);
     const span = document.createElement('span');
-    const email = document.createTextNode(msg.email);
+    const email = document.createTextNode('Email: ' + msg.email);
     span.appendChild(email);
     senderDiv.appendChild(span);
     messageDiv.appendChild(senderDiv);
 
+    // const locationDiv = document.createElement('div');
+    // const loc = document.createTextNode('Location: ' + msg.location);
+    // locationDiv.appendChild(loc);
+    // messageDiv.appendChild(locationDiv);
+
     const dateDiv = document.createElement('div');
-    const dateData = document.createTextNode(msg.date_sent);
+    const dateData = document.createTextNode('Date: ' + msg.date_sent);
     dateDiv.appendChild(dateData);
     messageDiv.appendChild(dateDiv);
 

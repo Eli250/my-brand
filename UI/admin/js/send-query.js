@@ -69,6 +69,7 @@ const sendMessage = () => {
       subject: subj,
       message: message,
       email: email,
+      location: exactLocation,
     };
     fetch('https://develi-api.herokuapp.com/api/v1/queries', {
       method: 'POST',
