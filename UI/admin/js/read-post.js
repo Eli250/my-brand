@@ -224,11 +224,14 @@ const validate = function () {
     //Getting Current Date and time
     let date = new Date();
 
-    postData(`http://develi-api.herokuapp.com/api/v1/articles/${id}/comments`, {
-      comment: message.value,
-      email: email.value,
-      sender: sender.value,
-    }).then((data) => {
+    postData(
+      `https://develi-api.herokuapp.com/api/v1/articles/${id}/comments`,
+      {
+        comment: message.value,
+        email: email.value,
+        sender: sender.value,
+      }
+    ).then((data) => {
       console.log(data);
       alert('Comment Sent!');
       location.reload();
