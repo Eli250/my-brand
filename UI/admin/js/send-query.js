@@ -70,7 +70,7 @@ const sendMessage = () => {
       message: message,
       email: email,
     };
-    fetch('http://develi-api.herokuapp.com/api/v1/queries', {
+    fetch('https://develi-api.herokuapp.com/api/v1/queries', {
       method: 'POST',
       headers: {
         Accept: 'application/JSON,text/plain,*/*,',
