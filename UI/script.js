@@ -35,7 +35,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 //Displaying Articles on Home
 const token = JSON.parse(localStorage.getItem('AccessToken'));
+const signBtn = document.querySelector('#signinHome');
 
+if (token) {
+  signBtn.innerHTML = 'Administrator';
+  signBtn.href = 'UI/admin/dashboard.html';
+}
 const getResources = async () => {
   const response = await fetch(
     'https://develi-api.herokuapp.com/api/v1/articles'
