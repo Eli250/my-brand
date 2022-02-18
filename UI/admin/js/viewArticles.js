@@ -40,7 +40,7 @@ function displayPosts() {
         const blogtextDiv = document.createElement('div');
         blogtextDiv.className = 'blog-text';
         let blogSpan = document.createElement('span');
-        let spantext = document.createTextNode(post.datePosted);
+        let spantext = document.createTextNode(post.created_on);
         blogSpan.appendChild(spantext);
         blogtextDiv.appendChild(blogSpan);
 

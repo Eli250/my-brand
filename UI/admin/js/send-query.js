@@ -20,25 +20,7 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(SuccessfullLookup);
 }
 
-const postData = async (url = '', data = {}) => {
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/JSON,text/plain,*/*,',
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  return response.json();
-};
-
 const sendMessage = () => {
-  // let queries = [];
-  // if (window.localStorage.getItem('Queries') === null) {
-  //   window.localStorage.setItem('Queries', JSON.stringify(queries));
-  // }
-  // queries = JSON.parse(localStorage.getItem('Queries'));
-
   const form = document.querySelector('#form-contact');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -82,19 +64,25 @@ const sendMessage = () => {
     } else {
       infoMessage.innerHTML = '';
     }
-
     const query = {
       senderName: sender,
       subject: subj,
       message: message,
       email: email,
     };
-    postData('http://develi-api.herokuapp.com/api/v1/queries', query).then(
-      (data) => {
+    fetch('http://develi-api.herokuapp.com/api/v1/queries', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/JSON,text/plain,*/*,',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(query),
+    })
+      .then((res) => res.json())
+      .then((data) => {
         if (data.message === 'Query Created!:') alert(data.message);
         location.reload();
-      }
-    );
+      });
   });
 };
 
