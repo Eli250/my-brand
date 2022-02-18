@@ -82,7 +82,7 @@ function displayPosts() {
         deleteBtn.addEventListener('click', function (event) {
           if (window.confirm(`Are you sure to delete post?`)) {
             deleteData(
-              `http://develi-api.herokuapp.com/api/v1/articles/${post._id}`
+              `https://develi-api.herokuapp.com/api/v1/articles/${post._id}`
             ).then((data) => {
               if (data.message === 'Article Deleted Successfully')
                 location.reload();
