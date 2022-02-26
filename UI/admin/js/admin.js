@@ -44,8 +44,5 @@ function login() {
   }
 }
 function logout() {
-  let user = window.localStorage.getItem('userCredential');
-  user = JSON.parse(user);
-  user.isLoggedIn = false;
-  window.localStorage.setItem('userCredential', JSON.stringify(user));
+  window.localStorage.clear();
 }

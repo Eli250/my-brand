@@ -1,41 +1,56 @@
 'use strict';
 
-function getMessages() {
-  let messages = localStorage.getItem('Queries');
-  if (messages === null || messages.length === 0) {
-    return [];
-  }
-  return JSON.parse(messages);
-}
+const token = JSON.parse(localStorage.getItem('AccessToken'));
 
-let messages = getMessages();
+const getResources = async () => {
+  const response = await fetch(
+    `https://develi-api.herokuapp.com/api/v1/queries`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
-messages.forEach((msg) => {
-  const messageSection = document.querySelector('#message-content');
+  if (response.status !== 200) throw new Error('Cannot fetch data.');
 
-  const messageDiv = document.createElement('div');
-  messageDiv.className = 'messages';
-  const msgDiv = document.createElement('div');
-  msgDiv.classList.add('msg');
-  const msgContent = document.createTextNode(msg.message);
-  msgDiv.appendChild(msgContent);
-  messageDiv.appendChild(msgDiv);
+  const data = await response.json();
+  return data;
+};
 
-  const senderDiv = document.createElement('div');
-  senderDiv.className = 'sender';
+getResources().then((data) => {
+  data.data.forEach((msg) => {
+    const messageSection = document.querySelector('#message-content');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'messages';
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('msg');
+    const msgContent = document.createTextNode('Message: ' + msg.message);
+    msgDiv.appendChild(msgContent);
+    messageDiv.appendChild(msgDiv);
 
-  const sender = document.createTextNode(msg.sender + ' ');
-  senderDiv.appendChild(sender);
-  const span = document.createElement('span');
-  const email = document.createTextNode(msg.email);
-  span.appendChild(email);
-  senderDiv.appendChild(span);
-  messageDiv.appendChild(senderDiv);
+    const senderDiv = document.createElement('div');
+    senderDiv.className = 'sender';
 
-  const dateDiv = document.createElement('div');
-  const dateData = document.createTextNode(msg.date);
-  dateDiv.appendChild(dateData);
-  messageDiv.appendChild(dateDiv);
+    const sender = document.createTextNode('Sender: ' + msg.senderName + ' ');
+    senderDiv.appendChild(sender);
+    const span = document.createElement('span');
+    const email = document.createTextNode('Email: ' + msg.email);
+    span.appendChild(email);
+    senderDiv.appendChild(span);
+    messageDiv.appendChild(senderDiv);
 
-  messageSection.appendChild(messageDiv);
+    // const locationDiv = document.createElement('div');
+    // const loc = document.createTextNode('Location: ' + msg.location);
+    // locationDiv.appendChild(loc);
+    // messageDiv.appendChild(locationDiv);
+
+    const dateDiv = document.createElement('div');
+    const dateData = document.createTextNode('Date: ' + msg.date_sent);
+    dateDiv.appendChild(dateData);
+    messageDiv.appendChild(dateDiv);
+
+    messageSection.appendChild(messageDiv);
+  });
 });

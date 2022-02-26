@@ -21,12 +21,6 @@ if (navigator.geolocation) {
 }
 
 const sendMessage = () => {
-  let queries = [];
-  if (window.localStorage.getItem('Queries') === null) {
-    window.localStorage.setItem('Queries', JSON.stringify(queries));
-  }
-  queries = JSON.parse(localStorage.getItem('Queries'));
-
   const form = document.querySelector('#form-contact');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -70,25 +64,26 @@ const sendMessage = () => {
     } else {
       infoMessage.innerHTML = '';
     }
-
-    let query = {
-      ID: uuidv4(),
-      sender: sender,
-      email: email,
+    const query = {
+      senderName: sender,
       subject: subj,
       message: message,
-      exactLocation,
-      date: new Date(),
+      email: email,
+      location: exactLocation,
     };
-
-    queries.push(query);
-    window.localStorage.setItem('Queries', JSON.stringify(queries));
-
-    alert('Query Sent Successfully!');
-    location.reload();
-
-    const stored = JSON.parse(localStorage.getItem('Queries'));
-    console.log(stored);
+    fetch('https://develi-api.herokuapp.com/api/v1/queries', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/JSON,text/plain,*/*,',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(query),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message === 'Query Created!:') alert(data.message);
+        location.reload();
+      });
   });
 };
 
